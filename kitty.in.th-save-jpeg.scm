@@ -8,6 +8,9 @@
 ;; This script is a quick save file in JPEG format to predefined location.
 ;;
 ;; ChangeLogs
+;; v0.02 Sun, 25 Apr 2010 20:45:26 +0700
+;;   - Flatten image before saving
+;;
 ;; v0.01 Wed, 21 Apr 2010 15:48:58 +0700
 ;;   - Initial Release
 
@@ -16,7 +19,7 @@
 		(filename (string-append (car (strbreakup (car (gimp-image-get-filename image)) ".")) ".jpg"))
 	)
 
-	(file-jpeg-save RUN-NONINTERACTIVE image drawable filename filename 0.85 0 1 1 "" 2 1 0 2)))
+	(file-jpeg-save RUN-NONINTERACTIVE image (car (gimp-image-flatten image)) filename filename 0.85 0 1 1 "" 2 1 0 2)))
 
 (script-fu-register
 	"kitty.in.th-save-jpeg"
